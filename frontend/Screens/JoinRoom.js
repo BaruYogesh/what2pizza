@@ -1,5 +1,6 @@
 import React, { Component } from './../node_modules/react';
 import { StyleSheet, Text, View, TextInput} from 'react-native';
+import { Button } from 'react-native';
 
 export default class JoinRoom extends React.Component {
     constructor(props) {
@@ -10,7 +11,14 @@ export default class JoinRoom extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-            <Text>Join Room</Text>      
+            <Text>Enter Room ID</Text> 
+            <TextInput
+              //style={signin_style.input}
+              placeholder="Code"
+              onChangeText={(code) => this.setState({code})}
+              value={this.state.code}
+          />    
+          <Button title="GO" onPress = { () => {this.props.navigation.navigate('ToppingsSelect')}}></Button> 
         </View>
       );
     }
