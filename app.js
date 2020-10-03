@@ -17,7 +17,7 @@ const io = socketio(server);
 roomNames = new Set();
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'test/index.html'))
+  res.sendFile(path.join(__dirname, 'backend/test/index.html'))
 })
 
 // Run when client connects
