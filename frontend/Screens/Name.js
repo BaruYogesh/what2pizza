@@ -3,13 +3,17 @@ import { StyleSheet, Text, View, TextInput} from 'react-native';
 import { Button } from 'react-native';
 
 
+
 export default class Name extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: ''};
+    this.state = {
+      name: '',
+    }
   }
 
   render() {
+    
     return (
       <View style={styles.container}>
           <Text>Sign In</Text>      
@@ -20,9 +24,11 @@ export default class Name extends React.Component {
               value={this.state.name}
           />
           <Button title="Sign In" onPress = { () => {this.props.navigation.navigate('JoinCreateRoom')}}></Button>
+
       </View>
     );
   }
+
 }
 const signin_style = StyleSheet.create({
   image: {
