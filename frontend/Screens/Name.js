@@ -1,12 +1,13 @@
 import React, { Component } from './../node_modules/react';
 import { StyleSheet, Text, View, TextInput} from 'react-native';
 import { Button } from 'react-native';
+import io from "socket.io-client";
 
 
 export default class Name extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: ''};
+    this.state = {name: '', socket: null};
   }
 
   render() {
@@ -19,7 +20,8 @@ export default class Name extends React.Component {
               onChangeText={(name) => this.setState({name})}
               value={this.state.name}
           />
-          <Button title="Sign In" onPress = { () => {this.props.navigation.navigate('JoinCreateRoom')}}></Button>
+          <Button title="Sign In" onPress = { () => {
+            this.props.navigation.navigate('JoinCreateRoom', {name: this.state.name, socket: io("http://192.168.0.158:3001")});}}></Button>
       </View>
     );
   }
