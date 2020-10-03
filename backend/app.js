@@ -23,18 +23,26 @@ app.get('/', function(req, res) {
 // Run when client connects
 io.on('connection', socket => {
   console.log('connection', socket.id);
+
   socket.on('getroomname', () => {
+    console.log('getroomname', socket.id);
     roomName = makeid(4);
 
-    while (!(roomNames.has(roomName))){
+    while ((roomNames.has(roomName))){
       roomName = makeid(4);
     }
-
-    socket.emit(roomName);
+    console.log(roomName);
+    socket.emit('createRoomName', roomName);
   }) 
+
+  socket.on('roomExists', (roomName) => {
+    console.log(roomName);
+    socket.emit('roomExists', roomNames.has(roomName));
+  })
+  
   socket.on('joinRoom', ({ username, room, pizza, roomOwner }) => {
     const user = userJoin(socket.id, username, room, pizza, roomOwner);
-
+    console.log(user);
     socket.join(user.room);
 
     // Send users and room info
@@ -76,7 +84,7 @@ io.on('connection', socket => {
 
 function makeid(length) {
   let result           = '';
-  let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  let characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let charactersLength = characters.length;
   for ( let i = 0; i < length; i++ ) {
      result += characters.charAt(Math.floor(Math.random() * charactersLength));
