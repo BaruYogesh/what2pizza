@@ -10,7 +10,7 @@ export default class JoinRoom extends React.Component {
   
     render() {
       return (
-        <View style={styles.container}>
+        <View style={styles.container}> 
             <Text>Enter Room ID</Text> 
             <TextInput
               //style={signin_style.input}
