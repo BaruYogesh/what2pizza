@@ -76,8 +76,6 @@ const styles = StyleSheet.create({
     container: {
       marginTop: -50,
       flex: 1,
-      alignItems: 'left',
-      justifyContent: 'left', 
       backgroundColor: '#444444'
     },
     buttons: {

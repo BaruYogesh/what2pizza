@@ -37,7 +37,7 @@ export default class Order extends React.Component {
                 <Text style={styles.header}>{title}</Text>
               )}
             />
-            <Button color ='darkred' title="Place Order" onPress = { () => {this.props.navigation.navigate('Confirm', {order: this.order})}}></Button>
+            <Button color ='darkred' title="Place Order" onPress = { () => {this.props.navigation.navigate('Confirm', {order: this.orders})}}></Button>
                  
         </View>
       );
