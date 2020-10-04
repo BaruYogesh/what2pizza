@@ -12,13 +12,17 @@ export default class JoinRoom extends React.Component {
       return (
         <View style={styles.container}> 
             <Text>Enter Room ID</Text> 
+
+        <View style = {signin_style.input}>
             <TextInput
               //style={signin_style.input}
               placeholder="Code"
               onChangeText={(code) => this.setState({code})}
               value={this.state.code}
-          />    
-          <Button title="GO" onPress = { () => {this.props.route.params.socket.emit('roomExists', this.state.code)}}></Button> 
+          />
+        </View>
+
+          <Button color = 'darkred' title="GO" onPress = { () => {this.props.route.params.socket.emit('roomExists', this.state.code)}}></Button> 
           <Text>{this.state.wrongCode ? "This room does not exist!" : ""}</Text>
         </View>
       );
@@ -38,12 +42,39 @@ export default class JoinRoom extends React.Component {
     }
 }
 
+
+const signin_style = StyleSheet.create({
+  image: {
+    marginTop: 25,
+    width: 300,
+    height: 60,
+    resizeMode: 'stretch'
+  },
+  hightlight: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  input: {
+    marginTop: 10,
+    marginBottom: 10,
+    height: 40,
+    width: 300,
+    backgroundColor:'#bebebe'
+  },
+  buttons: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',  
+    color: 'darkred'  
+  }
+});
+
 const styles = StyleSheet.create({
     container: {
       marginTop: -50,
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center', 
-      backgroundColor: 'white'
+      backgroundColor: '#444444'
     }
   });

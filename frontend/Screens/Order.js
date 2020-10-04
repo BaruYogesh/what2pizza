@@ -18,7 +18,7 @@ export default class Order extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-            <Text style={{marginTop:50}}>Final Order</Text>
+            <Text style={{marginTop:50, fontWeight: 'bold'}}>Final Order</Text>
             <SectionList sections={
                 [{
                   title: "Final Order",
@@ -27,12 +27,15 @@ export default class Order extends React.Component {
               }
               renderItem={({ item }) => <Text>{item}</Text>}
             />
-            <Button title="Place Order" onPress = { () => {this.props.navigation.navigate('Confirm', {order: this.orders})}}></Button>
+            <Button color ='darkred' title="Place Order" onPress = { () => {this.props.navigation.navigate('Confirm', {order: this.orders})}}></Button>
                  
         </View>
       );
     }
 }
+
+
+
 
 const styles = StyleSheet.create({
     container: {
@@ -40,6 +43,6 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center', 
-      backgroundColor: 'white'
+      backgroundColor: '#444444'
     }
   });
