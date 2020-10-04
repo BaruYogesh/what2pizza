@@ -12,7 +12,8 @@ export default class Order extends React.Component {
       while(next.value != undefined) {
         this.orders.push((next.value[1]/2.0).toString() + " pizzas with ingredients " + next.value[0]);
         next = iter.next();
-      }      
+      }
+      console.log(this.orders);
     }
   
     render() {

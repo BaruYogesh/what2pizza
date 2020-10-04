@@ -15,6 +15,7 @@ export default class Name extends React.Component {
     
     return (
       <View style={styles.container}>
+          <Text style={signin_style.title}>what2pizza</Text>
           <Text>Please Enter Your Name</Text>    
 
         <View style = {signin_style.input}>
@@ -52,13 +53,18 @@ const signin_style = StyleSheet.create({
     marginBottom: 10,
     height: 40,
     width: 300,
-    backgroundColor:'#bebebe'
+    backgroundColor:'#bebebe',
+    textAlign: "center"
   },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',  
     color: 'darkred'  
+  },
+  title: {
+    fontSize: 28,
+    marginBottom: 40
   }
 });
 const styles = StyleSheet.create({

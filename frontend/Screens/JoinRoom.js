@@ -1,6 +1,7 @@
 import React, { Component } from './../node_modules/react';
 import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { Button } from 'react-native';
+import { color } from 'react-native-reanimated';
 
 export default class JoinRoom extends React.Component {
     constructor(props) {
@@ -15,7 +16,7 @@ export default class JoinRoom extends React.Component {
 
         <View style = {signin_style.input}>
             <TextInput
-              //style={signin_style.input}
+              style={signin_style.input}
               placeholder="Code"
               onChangeText={(code) => this.setState({code})}
               value={this.state.code}
@@ -23,7 +24,7 @@ export default class JoinRoom extends React.Component {
         </View>
 
           <Button color = 'darkred' title="GO" onPress = { () => {this.props.route.params.socket.emit('roomExists', this.state.code)}}></Button> 
-          <Text>{this.state.wrongCode ? "This room does not exist!" : ""}</Text>
+          <Text style={{color:'red'}}>{this.state.wrongCode ? "This room does not exist!" : ""}</Text>
         </View>
       );
     }
@@ -59,7 +60,9 @@ const signin_style = StyleSheet.create({
     marginBottom: 10,
     height: 40,
     width: 300,
-    backgroundColor:'#bebebe'
+    backgroundColor:'#bebebe',
+    textAlign: "center",
+    fontSize: '22'
   },
   buttons: {
     flexDirection: 'row',
