@@ -4,6 +4,7 @@ import { StyleSheet, Text, View, TextInput, SectionList} from 'react-native';
 export default class Confirm extends React.Component {
     constructor(props) {
       super(props);
+      console.log(this.props.route.params.order);
       this.state = {name: ''};
     }
   
