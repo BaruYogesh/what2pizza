@@ -23,7 +23,7 @@ export default class Name extends React.Component {
               value={this.state.name}
           />
           <Button title="Sign In" onPress = { () => {
-            this.props.navigation.navigate('JoinCreateRoom', {name: this.state.name, socket: io("http://192.168.86.240:3001")});}}></Button>
+            this.props.navigation.navigate('JoinCreateRoom', {name: this.state.name, socket: io("https://what2pizza.herokuapp.com/")});}}></Button>
       </View>
     );
   }
