@@ -25,10 +25,10 @@ export default class Order extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-            <Text style={{marginTop:50, fontWeight: 'bold', textAlign:'center'}}>Order</Text>
+            <Text style={{marginTop:50, fontSize: 30, fontWeight: 'bold', color: 'white', textAlign:'center'}}>Order</Text>
             <SectionList sections={
                 [{
-                  title: "Final Order",
+                  title: "Final Order:",
                   data: this.orders
                 }]
               }
@@ -58,9 +58,13 @@ const styles = StyleSheet.create({
     item: {
       marginTop: 50,
       fontSize: 25, 
-      textAlign:'center'
+      textAlign:'center',
+      color: 'white',
+      fontWeight: 'bold'
     },
     header: {
-      fontSize: 30
+      fontSize: 30,
+      color: 'white',
+      fontWeight: 'bold'
     }
   });

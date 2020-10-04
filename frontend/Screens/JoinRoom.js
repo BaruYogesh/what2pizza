@@ -62,7 +62,7 @@ const signin_style = StyleSheet.create({
     width: 300,
     backgroundColor:'#bebebe',
     textAlign: "center",
-    fontSize: '22'
+    fontSize: 22
   },
   buttons: {
     flexDirection: 'row',
