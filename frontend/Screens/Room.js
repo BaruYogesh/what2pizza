@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TextInput, SectionList} from 'react-native';
 export default class Room extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {name: ''};
+      this.state = {roomId: ''};
     }
   
     render() {

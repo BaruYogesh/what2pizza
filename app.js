@@ -7,9 +7,14 @@ const {
   userIsOwner,
   getCurrentUser,
   userLeave,
+<<<<<<< HEAD:backend/app.js
   getRoomUsers,
   addPizzaToUser
 } = require('./utils/users');
+=======
+  getRoomUsers
+} = require('./backend/utils/users');
+>>>>>>> b0adc344909600d89a4a477426872eed2e103a50:app.js
 
 const app = express();
 const server = http.createServer(app);
@@ -18,7 +23,7 @@ const io = socketio(server);
 roomNames = new Set();
 
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'test/index.html'))
+  res.sendFile(path.join(__dirname, 'backend/test/index.html'))
 })
 
 // Run when client connects
