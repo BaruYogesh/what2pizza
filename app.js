@@ -7,14 +7,9 @@ const {
   userIsOwner,
   getCurrentUser,
   userLeave,
-<<<<<<< HEAD:backend/app.js
   getRoomUsers,
   addPizzaToUser
-} = require('./utils/users');
-=======
-  getRoomUsers
 } = require('./backend/utils/users');
->>>>>>> b0adc344909600d89a4a477426872eed2e103a50:app.js
 
 const app = express();
 const server = http.createServer(app);
@@ -61,7 +56,6 @@ io.on('connection', socket => {
   });
 
   socket.on('addPizzaToUser', (pizza) => {
-    console.log("endpoint", pizza);
     addPizzaToUser(socket.id, pizza);
     console.log(getCurrentUser(socket.id));
   })
@@ -69,12 +63,13 @@ io.on('connection', socket => {
   socket.on('getRoomUsers', () => {
 
     const user = getCurrentUser(socket.id);
-
-    io.to(user.room).emit('roomUsers', {
-      room: user.room,
-      users: getRoomUsers(user.room)
-    })
-
+    console.log("getRoomUsers", user)
+    if (user) {
+      io.to(user.room).emit('roomUsers', {
+        room: user.room,
+        users: getRoomUsers(user.room)
+      })  
+    }
   })
 
 

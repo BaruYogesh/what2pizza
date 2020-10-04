@@ -40,6 +40,8 @@ function addPizzaToUser(id, pizza) {
   if (index !== -1) {
     users[index].pizza = pizza;
 
+  } else {
+    console.log(users);
   }
 }
 

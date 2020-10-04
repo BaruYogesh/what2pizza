@@ -31,6 +31,7 @@ export default class JoinRoom extends React.Component {
           this.setState({wrongCode: true})
           setTimeout(()=>{this.setState({wrongCode: false})}, 2500);
         } else {
+          this.props.route.params.socket.emit('joinRoom', { username: this.props.route.params.name, room: this.state.code, pizza: {}, roomOwner: false })
           this.props.navigation.navigate('ToppingsSelect', {name: this.props.route.params.name, socket: this.props.route.params.socket})
         }
       })

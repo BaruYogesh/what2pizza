@@ -22,7 +22,6 @@ export default class JoinCreateRoom extends React.Component {
     }
 
     componentDidMount() {
-      //console.log(this.props);
 
       this.props.route.params.socket.on('createRoomName', roomName => {
         this.props.route.params.socket.emit('joinRoom', { username: this.props.route.params.name, room: roomName, pizza: {}, roomOwner: true })
