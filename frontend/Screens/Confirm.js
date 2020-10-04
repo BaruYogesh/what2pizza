@@ -18,7 +18,7 @@ export default class Confirm extends React.Component {
                   data: this.props.route.params.order
                 }]
               }
-              renderItem={({ item }) => <Text style={{color: 'white'}}>{item}</Text>}
+              renderItem={({ item }) => <Text style={{color: 'white', fontWeight: 'bold', fontSize: 20}}>{item}</Text>}
             />      
         </View>
       );
