@@ -32,10 +32,22 @@ function getRoomUsers(room) {
   return users.filter(user => user.room === room);
 }
 
+function addPizzaToUser(id, pizza) {
+  console.log(id, pizza);
+  const index = users.findIndex(user => user.id === id);
+
+  console.log(index)
+  if (index !== -1) {
+    users[index].pizza = pizza;
+
+  }
+}
+
 module.exports = {
   userJoin,
   getCurrentUser,
   userLeave,
   getRoomUsers,
-  userIsOwner
+  userIsOwner,
+  addPizzaToUser
 };

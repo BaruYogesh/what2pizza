@@ -1,5 +1,5 @@
 import React, { Component } from './../node_modules/react';
-import { StyleSheet, Text, View, TextInput} from 'react-native';
+import { StyleSheet, Text, View, TextInput, SectionList} from 'react-native';
 
 export default class Room extends React.Component {
     constructor(props) {
@@ -10,9 +10,24 @@ export default class Room extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-            <Text>Room</Text>      
+            <Text>{this.props.room}</Text>    
+            {/* <SectionList>
+              sections={
+                [{
+                  title: "Users"
+                }]
+              }
+            </SectionList> */}
         </View>
       );
+    }
+
+    componentDidMount() {
+      this.props.route.params.socket.emit('getRoomUsers');
+      this.props.route.params.socket.on('roomUsers', ({room, users}) => {
+        this.props.room = room;
+        this.props.users = users;
+      })
     }
 }
 

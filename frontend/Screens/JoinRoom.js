@@ -31,7 +31,7 @@ export default class JoinRoom extends React.Component {
           this.setState({wrongCode: true})
           setTimeout(()=>{this.setState({wrongCode: false})}, 2500);
         } else {
-          this.props.navigation.navigate('ToppingsSelect')
+          this.props.navigation.navigate('ToppingsSelect', {name: this.props.route.params.name, socket: this.props.route.params.socket})
         }
       })
     }

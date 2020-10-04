@@ -8,10 +8,13 @@ export default class ToppingsSelect extends React.Component {
     constructor(props) {
       super(props);
       this.state = {
+        
         olives : false,
         pepperonis : false,
         sausage: false,
         mushrooms: false
+        
+        
       }
       this.preferences = new Set();
     }
@@ -45,7 +48,11 @@ export default class ToppingsSelect extends React.Component {
             <Text>Mushrooms</Text> 
 
             <Button title="Go to Room" onPress = { () => {
-            this.props.navigation.navigate('Room', {name: this.state.name, socket: io("http://192.168.0.158:3001")});}}></Button>
+
+              
+              console.log('sending:', this.preferences)
+              this.props.route.params.socket.emit('addPizzaToUser', Array.from(this.preferences));
+              this.props.navigation.navigate('Room', {name: this.props.route.params.name, socket: this.props.route.params.socket})}}></Button>
         </View>
         
       );

@@ -15,7 +15,7 @@ export default class JoinCreateRoom extends React.Component {
             <Button title="Create Room" onPress = { () => {
               this.props.route.params.socket.emit('getroomname');
               
-              this.props.navigation.navigate('ToppingsSelect')}}></Button>    
+              this.props.navigation.navigate('ToppingsSelect', {name: this.props.route.params.name, socket: this.props.route.params.socket})}}></Button>    
             <Button title="Join Room" onPress = { () => {this.props.navigation.navigate('JoinRoom', {name: this.props.route.params.name, socket: this.props.route.params.socket})}}></Button>
         </View>
       );

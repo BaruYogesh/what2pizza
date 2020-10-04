@@ -7,7 +7,8 @@ const {
   userIsOwner,
   getCurrentUser,
   userLeave,
-  getRoomUsers
+  getRoomUsers,
+  addPizzaToUser
 } = require('./utils/users');
 
 const app = express();
@@ -53,6 +54,23 @@ io.on('connection', socket => {
 
     roomNames.add(user.room);
   });
+
+  socket.on('addPizzaToUser', (pizza) => {
+    console.log("endpoint", pizza);
+    addPizzaToUser(socket.id, pizza);
+    console.log(getCurrentUser(socket.id));
+  })
+
+  socket.on('getRoomUsers', () => {
+
+    const user = getCurrentUser(socket.id);
+
+    io.to(user.room).emit('roomUsers', {
+      room: user.room,
+      users: getRoomUsers(user.room)
+    })
+
+  })
 
 
   socket.on('finalize', () => {
