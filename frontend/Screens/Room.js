@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TextInput, SectionList, Button} from 'react-nat
 export default class Room extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {roomId: ''};
+      this.state = {roomId: '', isOwner: false};
       this.users = [];
       this.orders = [];
     }
@@ -13,16 +13,17 @@ export default class Room extends React.Component {
       //this.props.route.params.socket.emit('getRoomUsers');
       return (
         <View style={styles.container}>
-            <Text style={{marginTop:+50}}>{this.state.roomId}</Text>    
+            <Text style={{marginTop:+100, marginLeft: +50, fontSize: 24, }}>Room Code: {this.state.roomId}</Text>
+            <Text style={{marginLeft: +50, fontSize: 20}}>Users:</Text>    
             <SectionList sections={
                 [{
                   title: "Users",
                   data: this.users
                 }]
               }
-              renderItem={({ item }) => <Text>{item}</Text>}
+              renderItem={({ item }) => <Text style={{marginLeft: +50, fontSize: 20}}>{item}</Text>}
             />
-            <Button title="Generate Order" onPress = { () => {this.props.navigation.navigate('Order', {name: this.props.route.params.name, socket: this.props.route.params.socket, pizza: pizza(this.orders)})}}></Button>
+            <Button color = 'darkred' title="Generate Order" disabled={!this.state.isOwner} onPress = { () => {this.props.navigation.navigate('Order', {name: this.props.route.params.name, socket: this.props.route.params.socket, pizza: pizza(this.orders)})}}></Button>
             
         </View>
       );
@@ -37,9 +38,12 @@ export default class Room extends React.Component {
         this.orders = [];
         for (let user of users){
           this.users.push(user.username);
-          this.orders.push(user.pizza);
+
+          if (this.props.route.params.socket.id === user.id && user.roomOwner){
+            this.setState({isOwner: true})
+          }
         }
-        console.log(this.state.roomId, this.users);
+        console.log(this.state.roomId, this.state.isOwner);
       })
       setTimeout(() => {
         this.props.route.params.socket.emit('getRoomUsers');
@@ -70,8 +74,14 @@ const styles = StyleSheet.create({
     container: {
       marginTop: -50,
       flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center', 
-      backgroundColor: 'white'
+      alignItems: 'left',
+      justifyContent: 'left', 
+      backgroundColor: '#444444'
+    },
+    buttons: {
+      flex:1,
+      flexDirection: 'column',
+      justifyContent: 'center',
+      alignItems: 'center',    
     }
   });
