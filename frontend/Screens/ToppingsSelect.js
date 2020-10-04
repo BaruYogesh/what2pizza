@@ -62,7 +62,7 @@ export default class ToppingsSelect extends React.Component {
 
 
             <Button title="Go to Room" onPress = { () => {
-            this.props.navigation.navigate('Room', {name: this.state.name, socket: io("http://192.168.0.158:3001")});}}></Button>
+            this.props.navigation.navigate('Room', {name: this.props.route.params.name, socket: this.props.route.params.socket})}}></Button>
         </View>
         
       );
