@@ -11,12 +11,20 @@ export default class JoinCreateRoom extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-            <Text>Join Create Room</Text>  
+          
+            <Text style={{marginTop:50}}>Join or Create a Room</Text> 
+
+          <View style = {styles.buttons}>
             <Button title="Create Room" onPress = { () => {
               this.props.route.params.socket.emit('getroomname');
               
               this.props.navigation.navigate('ToppingsSelect', {name: this.props.route.params.name, socket: this.props.route.params.socket})}}></Button>    
+            </View>
+            
+            <View style = {styles.buttons}>
             <Button title="Join Room" onPress = { () => {this.props.navigation.navigate('JoinRoom', {name: this.props.route.params.name, socket: this.props.route.params.socket})}}></Button>
+            </View>
+        
         </View>
       );
     }
@@ -33,13 +41,14 @@ export default class JoinCreateRoom extends React.Component {
 const styles = StyleSheet.create({
     container: {
       marginTop: -50,
-      flex: 1,
+      flex: 2,
       alignItems: 'center',
       justifyContent: 'center', 
       backgroundColor: 'white'
     },
     buttons: {
-      flexDirection: 'row',
+      flex:1,
+      flexDirection: 'column',
       justifyContent: 'center',
       alignItems: 'center',    
     } 
