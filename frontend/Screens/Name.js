@@ -15,14 +15,22 @@ export default class Name extends React.Component {
     
     return (
       <View style={styles.container}>
-          <Text>Sign In</Text>      
+          <Text style={signin_style.title}>what2pizza</Text>
+          <Text>Please Enter Your Name</Text>    
+
+        <View style = {signin_style.input}>
           <TextInput
               style={signin_style.input}
               placeholder="Name"
               onChangeText={(name) => this.setState({name})}
               value={this.state.name}
           />
-          <Button title="Sign In" onPress = { () => {
+        </View>
+
+          <Button
+          color = 'darkred'
+          title="Sign In" 
+          onPress = { () => {
             this.props.navigation.navigate('JoinCreateRoom', {name: this.state.name, socket: io("https://what2pizza.herokuapp.com/")});}}></Button>
       </View>
     );
@@ -42,13 +50,21 @@ const signin_style = StyleSheet.create({
   },
   input: {
     marginTop: 10,
+    marginBottom: 10,
     height: 40,
-    width: 300
+    width: 300,
+    backgroundColor:'#bebebe',
+    textAlign: "center"
   },
   buttons: {
     flexDirection: 'row',
     justifyContent: 'center',
-    alignItems: 'center',    
+    alignItems: 'center',  
+    color: 'darkred'  
+  },
+  title: {
+    fontSize: 28,
+    marginBottom: 40
   }
 });
 const styles = StyleSheet.create({
@@ -57,6 +73,6 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center', 
-    backgroundColor: 'white'
+    backgroundColor: '#444444'
   },
 });

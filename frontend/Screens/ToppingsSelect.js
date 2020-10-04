@@ -24,10 +24,7 @@ export default class ToppingsSelect extends React.Component {
       return (
         <View style={styles.container}>
 
-          <Text style={{marginTop:50}}>Select Your Toppings</Text> 
-
-
-         
+          <Text style={{marginTop:50, textAlign:"center"}}>Select Your Toppings</Text> 
 
           <View style={styles.row}>
             <Checkbox
@@ -61,10 +58,10 @@ export default class ToppingsSelect extends React.Component {
               onPress={() => {this.setState({ mushrooms: !mushrooms }); this.addPreference('mushrooms'); }}
             />
             <Text>Mushrooms</Text> 
-            </View>
+          </View>
 
 
-            <Button title="Go to Room" onPress = { () => {
+            <Button style={styles.container} title="Go to Room" onPress = { () => {
 
               
               console.log('sending:', this.preferences)
@@ -91,12 +88,13 @@ const styles = StyleSheet.create({
       alignItems: 'center',
       //alignSelf: 'center',
       //justifyContent: 'center'
+      marginLeft: 20
     },
     container: {
       flex:1,
       flexDirection: 'column',
       //alignItems: 'center',
       justifyContent: 'center', 
-      backgroundColor: 'white'
+      backgroundColor: '#444444'
     }
   });

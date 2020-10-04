@@ -13,7 +13,7 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator>
+      <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Name" component={Name} />
         <Stack.Screen name="JoinCreateRoom" component={JoinCreateRoom} />
         <Stack.Screen name="JoinRoom" component={JoinRoom} />

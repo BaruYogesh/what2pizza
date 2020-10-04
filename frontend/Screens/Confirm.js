@@ -10,7 +10,7 @@ export default class Confirm extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-            <Text style={{marginTop:50}}>Your Order is on its way!</Text>
+            <Text style={{marginTop:50, fontWeight: 'bold'}}>Your Order is on its way!</Text>
             <SectionList sections={
                 [{
                   title: "Order",
@@ -30,6 +30,6 @@ const styles = StyleSheet.create({
       flex: 1,
       alignItems: 'center',
       justifyContent: 'center', 
-      backgroundColor: 'white'
+      backgroundColor: '#444444'
     }
   });

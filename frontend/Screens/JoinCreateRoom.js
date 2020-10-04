@@ -15,14 +15,14 @@ export default class JoinCreateRoom extends React.Component {
             <Text style={{marginTop:50}}>Join or Create a Room</Text> 
 
           <View style = {styles.buttons}>
-            <Button title="Create Room" onPress = { () => {
+            <Button color= 'darkred' title="Create Room" onPress = { () => {
               this.props.route.params.socket.emit('getroomname');
               
               this.props.navigation.navigate('ToppingsSelect', {name: this.props.route.params.name, socket: this.props.route.params.socket})}}></Button>    
             </View>
             
             <View style = {styles.buttons}>
-            <Button title="Join Room" onPress = { () => {this.props.navigation.navigate('JoinRoom', {name: this.props.route.params.name, socket: this.props.route.params.socket})}}></Button>
+            <Button color = 'darkred' title="Join Room" onPress = { () => {this.props.navigation.navigate('JoinRoom', {name: this.props.route.params.name, socket: this.props.route.params.socket})}}></Button>
             </View>
         
         </View>
@@ -44,12 +44,15 @@ const styles = StyleSheet.create({
       flex: 2,
       alignItems: 'center',
       justifyContent: 'center', 
-      backgroundColor: 'white'
+      backgroundColor: '#444444' 
     },
     buttons: {
-      flex:1,
-      flexDirection: 'column',
+      //flex:1,
+      //flexDirection: 'column',
+      marginTop : 10,
+      marginBottom: 10,
       justifyContent: 'center',
-      alignItems: 'center',    
+      alignItems: 'center',
+      //color: 'darkred'
     } 
   });
