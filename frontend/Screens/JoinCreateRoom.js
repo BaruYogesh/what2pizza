@@ -12,7 +12,7 @@ export default class JoinCreateRoom extends React.Component {
       return (
         <View style={styles.container}>
           
-            <Text style={{marginTop:50}}>Join or Create a Room</Text> 
+            <Text style={{marginTop:50, fontSize: 24, color: 'white', fontWeight: 'bold'}}>Join or Create a Room</Text> 
 
           <View style = {styles.buttons}>
             <Button color= 'darkred' title="Create Room" onPress = { () => {

@@ -12,7 +12,7 @@ export default class JoinRoom extends React.Component {
     render() {
       return (
         <View style={styles.container}> 
-            <Text>Enter Room ID</Text> 
+            <Text style={{fontWeight: 'bold', fontSize: 24, color: 'white'}}>Enter Room ID</Text> 
 
         <View style = {signin_style.input}>
             <TextInput
@@ -24,7 +24,7 @@ export default class JoinRoom extends React.Component {
         </View>
 
           <Button color = 'darkred' title="GO" onPress = { () => {this.props.route.params.socket.emit('roomExists', this.state.code)}}></Button> 
-          <Text style={{color:'red'}}>{this.state.wrongCode ? "This room does not exist!" : ""}</Text>
+          <Text style={{color:'red', fontWeight: 'bold', fontSize: 20}}>{this.state.wrongCode ? "This room does not exist!" : ""}</Text>
         </View>
       );
     }
