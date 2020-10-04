@@ -23,7 +23,9 @@ export default class Room extends React.Component {
               }
               renderItem={({ item }) => <Text style={{marginLeft: +50, fontSize: 20, color: 'white', fontWeight: 'bold'}}>{item}</Text>}
             />
-            <Button color = 'darkred' title="Generate Order" disabled={!this.state.isOwner} onPress = { () => {this.props.navigation.navigate('Order', {name: this.props.route.params.name, socket: this.props.route.params.socket, pizza: pizza(this.orders)})}}></Button>
+            <Button color = 'darkred' title="Generate Order" disabled={!this.state.isOwner} onPress = { () => {
+              console.log(this.orders)
+              this.props.navigation.navigate('Order', {name: this.props.route.params.name, socket: this.props.route.params.socket, pizza: pizza(this.orders)})}}></Button>
             
         </View>
       );
@@ -38,7 +40,7 @@ export default class Room extends React.Component {
         this.orders = [];
         for (let user of users){
           this.users.push(user.username);
-
+          this.orders.push(user.pizza);
           if (this.props.route.params.socket.id === user.id && user.roomOwner){
             this.setState({isOwner: true})
           }
