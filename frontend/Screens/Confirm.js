@@ -10,14 +10,14 @@ export default class Confirm extends React.Component {
     render() {
       return (
         <View style={styles.container}>
-            <Text style={{marginTop:50, fontWeight: 'bold'}}>Your Order is on its way!</Text>
+            <Text style={{marginTop:500, fontWeight: 'bold', color: 'white', fontSize: 24}}>Your Order is on its way!</Text>
             <SectionList sections={
                 [{
                   title: "Order",
                   data: this.props.route.params.order
                 }]
               }
-              renderItem={({ item }) => <Text>{item}</Text>}
+              renderItem={({ item }) => <Text style={{color: 'white'}}>{item}</Text>}
             />      
         </View>
       );

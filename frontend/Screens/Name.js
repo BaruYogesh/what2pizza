@@ -16,7 +16,7 @@ export default class Name extends React.Component {
     return (
       <View style={styles.container}>
           <Text style={signin_style.title}>what2pizza</Text>
-          <Text>Please Enter Your Name</Text>    
+          <Text style={{fontSize: 20, fontWeight: 'bold', color: 'white'}}>Please Enter Your Name</Text>    
 
         <View style = {signin_style.input}>
           <TextInput
@@ -64,6 +64,8 @@ const signin_style = StyleSheet.create({
   },
   title: {
     fontSize: 28,
+    fontWeight: 'bold',
+    color: 'white',
     marginBottom: 40
   }
 });

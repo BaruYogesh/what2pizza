@@ -13,15 +13,15 @@ export default class Room extends React.Component {
       //this.props.route.params.socket.emit('getRoomUsers');
       return (
         <View style={styles.container}>
-            <Text style={{marginTop:+100, marginLeft: +50, fontSize: 24, }}>Room Code: {this.state.roomId}</Text>
-            <Text style={{marginLeft: +50, fontSize: 20}}>Users:</Text>    
+            <Text style={{marginTop:+100, marginLeft: +50, fontSize: 24, color: 'white', fontWeight: 'bold'}}>Room Code: {this.state.roomId}</Text>
+            <Text style={{marginLeft: +50, fontSize: 20, color: 'white', fontWeight: 'bold'}}>Users:</Text>    
             <SectionList sections={
                 [{
                   title: "Users",
                   data: this.users
                 }]
               }
-              renderItem={({ item }) => <Text style={{marginLeft: +50, fontSize: 20}}>{item}</Text>}
+              renderItem={({ item }) => <Text style={{marginLeft: +50, fontSize: 20, color: 'white', fontWeight: 'bold'}}>{item}</Text>}
             />
             <Button color = 'darkred' title="Generate Order" disabled={!this.state.isOwner} onPress = { () => {this.props.navigation.navigate('Order', {name: this.props.route.params.name, socket: this.props.route.params.socket, pizza: pizza(this.orders)})}}></Button>
             
