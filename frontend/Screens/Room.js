@@ -4,15 +4,25 @@ import { StyleSheet, Text, View, TextInput} from 'react-native';
 export default class Room extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {name: ''};
+      this.state = {roomId: ''};
     }
   
     render() {
       return (
         <View style={styles.container}>
-            <Text>Room</Text>      
+            <Text>Room { this.roomId } </Text>
+                 
         </View>
       );
+    }
+    componentDidMount() {
+      console.log("x");
+      this.props.route.params.socket.emit('getRoomId');
+      this.props.route.params.socket.on('getRoomId', (roomId) => {
+        this.setState({roomId: roomId});
+      })
+      
+      console.log(this.state);
     }
 }
 
