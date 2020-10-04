@@ -4,7 +4,7 @@ import { StyleSheet, Text, View, TextInput, SectionList, Button} from 'react-nat
 export default class Room extends React.Component {
     constructor(props) {
       super(props);
-      this.state = {roomId: '', isOwner: false};
+      this.state = {roomId: '', isOwner: true};
       this.users = [];
       this.orders = [];
     }
@@ -41,11 +41,11 @@ export default class Room extends React.Component {
         for (let user of users){
           this.users.push(user.username);
           this.orders.push(user.pizza);
-          if (this.props.route.params.socket.id === user.id && user.roomOwner){
-            this.setState({isOwner: true})
-          }
+          // if (this.props.route.params.socket.id === user.id && user.roomOwner){
+          //   this.setState({isOwner: true})
+          // }
         }
-        console.log(this.state.roomId, this.state.isOwner);
+        //console.log(this.state.roomId, this.state.isOwner);
       })
       setTimeout(() => {
         this.props.route.params.socket.emit('getRoomUsers');
