@@ -20,29 +20,46 @@ export default class ToppingsSelect extends React.Component {
       const { olives, pepperonis, sausage, mushrooms } = this.state;
       return (
         <View style={styles.container}>
-            <Text>Select Your Toppings</Text> 
-            <Checkbox
-              status={olives ? 'checked' : 'unchecked'}
-              onPress={() => {this.setState({ olives: !olives }); this.addPreference('olives'); }}
-            />
-            <Text>Olives</Text>
+
+          <Text style={{marginTop:50}}>Select Your Toppings</Text> 
+
+
+         
+
+          <View style={styles.row}>
             <Checkbox
               status={pepperonis ? 'checked' : 'unchecked'}
               onPress={() => {this.setState({ pepperonis: !pepperonis }); this.addPreference('pepperonis'); }}
             /> 
             <Text>Pepperoni</Text>
+            </View>
 
+
+            <View style={styles.row}>
+            
+            <Checkbox
+              status={olives ? 'checked' : 'unchecked'}
+              onPress={() => {this.setState({ olives: !olives }); this.addPreference('olives'); }}
+            />
+            <Text>Olives</Text>
+            </View>
+
+          <View style={styles.row}>
             <Checkbox
               status={sausage ? 'checked' : 'unchecked'}
               onPress={() => {this.setState({ sausage: !sausage }); this.addPreference('sausage'); }}
             />
             <Text>Sausage</Text>
+          </View>
 
+          <View style={styles.row}>
             <Checkbox
               status={mushrooms ? 'checked' : 'unchecked'}
               onPress={() => {this.setState({ mushrooms: !mushrooms }); this.addPreference('mushrooms'); }}
             />
             <Text>Mushrooms</Text> 
+            </View>
+
 
             <Button title="Go to Room" onPress = { () => {
             this.props.navigation.navigate('Room', {name: this.state.name, socket: io("http://192.168.0.158:3001")});}}></Button>
@@ -61,10 +78,17 @@ export default class ToppingsSelect extends React.Component {
 }
 
 const styles = StyleSheet.create({
-    container: {
-      marginTop: -50,
-      flex: 1,
+    row: {
+      flex:1, 
+      flexDirection: 'row', 
       alignItems: 'center',
+      //alignSelf: 'center',
+      //justifyContent: 'center'
+    },
+    container: {
+      flex:1,
+      flexDirection: 'column',
+      //alignItems: 'center',
       justifyContent: 'center', 
       backgroundColor: 'white'
     }
